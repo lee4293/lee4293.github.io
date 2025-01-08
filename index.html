@@ -1,61 +1,40 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <style>
-        .image-container {
-            position: relative;
-            display: inline-block;
-        }
-
-        .image-container img {
-            width: 100px;
-            height: 100px;
-            transition: 0.3s ease;
-        }
-
-        .image-container:hover img {
-            filter: brightness(50%);
-        }
-
-        .overlay-text {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-weight: bold;
-            background-color: rgba(0, 0, 0, 0);
-            text-align: center;
-            transition: 0.3s ease;
-            opacity: 0;
-        }
-
-        .image-container:hover .overlay-text {
-            background-color: rgba(0, 0, 0, 0.5);
-            opacity: 1;
-        }
-    </style>
-</head>
-<body>
-
-<h2>Welcome to my website.</h2>
-
-<p>As you can see, I'm not a fan of frontend.</p>
-
-<p>Live update test.</p>
-
-<p>You should click the image below.</p>
-
-<div class="image-container">
-    <a href="https://reddit.com/">
-        <img src="https://drive.google.com/thumbnail?id=1DEqNKu19ezEHUQGuAjrUH4bdooQpC4jD&sz=w1000" alt="Reddit Sentiment Analysis">
-        <div class="overlay-text">Reddit Sentiment Analysis</div>
-    </a>
-</div>
-
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mediaqueries.css">
+  </head>
+  <body>
+    <nav id="desktop-nav">
+        <div class="logo">Daniel Lee</div>
+        <div>
+            <u1 class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </u1>
+        </div>
+    </nav>
+    <nav id="hamburger-nav">
+        <div class="logo">Daniel Lee</div>
+        <div class="hamburger-menu">
+            <div class="hamburger-icon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="menu-links">
+                <li><a href="#about" onclick="toggleMenu()">About</a></li>
+                <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+                <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+            </div>
+        </div>
+    </nav>
+    <script src="script.js"></script> 
+ </body>
 </html>
