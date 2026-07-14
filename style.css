@@ -293,6 +293,12 @@ section {
   bottom: 2.5rem;
 }
 
+.arrow-up {
+  top: 2.5rem;
+  bottom: auto;
+  transform: rotate(180deg);
+}
+
 .details-container {
   padding: 1.5rem;
   flex: 1;
@@ -357,32 +363,123 @@ article .icon {
 
 #projects {
   position: relative;
+  width: min(1800px, calc(100% - 1.5rem));
+  margin: 0 auto;
 }
 
-.color-container {
-  border-color: rgb(163, 163, 163);
-  background: rgb(250, 250, 250);
+.projects-table {
+  width: 100%;
+  margin: 2rem auto 0;
+  background: transparent;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.project-media {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 2rem;
+  border: 1px solid rgba(163, 163, 163, 0.45);
+  background: white;
+  box-shadow: 0 12px 28px rgba(22, 32, 42, 0.08);
+  aspect-ratio: 16 / 10;
 }
 
 .project-img {
-  border-radius: 2rem;
-  width: 90%;
-  height: 90%;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 300ms ease, filter 300ms ease;
+}
+
+.project-card:hover .project-img,
+.project-card:focus-within .project-img {
+  transform: scale(1.03);
+  filter: brightness(0.78) saturate(0.96);
+}
+
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  padding: 1.5rem;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(0.3rem);
+  background: linear-gradient(180deg, rgba(8, 14, 20, 0.12), rgba(17, 27, 36, 0.82));
+  transition: opacity 240ms ease, transform 240ms ease, visibility 240ms ease;
+}
+
+.project-card:hover .project-overlay,
+.project-card:focus-within .project-overlay {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .project-title {
-  margin: 1rem;
-  color: black;
+  margin: 0;
+  max-width: 100%;
+  color: white;
+  text-align: center;
+  line-height: 1.05;
+  font-size: clamp(2rem, 2.6vw, 2.7rem);
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+.project-status {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.92rem;
+}
+
+.project-links {
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
 .project-btn {
-  color: black;
-  border-color: rgb(163, 163, 163);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  min-width: 7.4rem;
+  font-size: 1rem;
+  padding: 1rem 1.15rem;
+}
+
+.project-btn:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.16);
 }
 
 /* CONTACT */
 
 #contact {
+  position: relative;
   display: flex;
   justify-content: center;
   flex-direction: column;

@@ -6,6 +6,12 @@
     .about-containers {
       flex-wrap: wrap;
     }
+    #projects {
+      width: calc(100% - 2rem);
+    }
+    .projects-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
     #contact,
     #projects {
       height: fit-content;
@@ -44,6 +50,12 @@
     }
     .about-containers {
       margin-top: 0;
+    }
+    #projects {
+      width: calc(100% - 1rem);
+    }
+    .projects-grid {
+      grid-template-columns: 1fr;
     }
   }
   
@@ -99,5 +111,13 @@
     }
     .text-container {
       text-align: justify;
+    }
+    .project-overlay {
+      opacity: 1;
+      transform: none;
+      visibility: visible;
+    }
+    .project-img {
+      filter: brightness(0.82);
     }
   }

@@ -72,6 +72,12 @@
       </div>
     </section>
     <section id="about">
+      <img
+        src="./assets/arrow.png"
+        alt="Up arrow icon"
+        class="icon arrow arrow-up"
+        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+      />
       <p class="section__text__p1">Get To Know More</p>
       <h1 class="title">About Me</h1>
       <div class="section-container">
@@ -105,7 +111,7 @@
           </div>
           <div class="text-container">
             <p>
-              Hi! I'm a junior at <a href="https://www.purdue.edu/" target="_blank">Purdue University</a> studying Data Science with a concentration in Computer Science!
+              Hi! I'm a recent graduate from <a href="https://www.purdue.edu/" target="_blank">Purdue University</a> with a Bachelor of Science in Data Science.
               <br>
               <br>
               My professional experience includes two years of software and data engineering. I'm a maker, researcher, and data science enthusiast with a passion for software engineering.
@@ -124,6 +130,12 @@
       />
     </section>
     <section id="experience">
+      <img
+        src="./assets/arrow.png"
+        alt="Up arrow icon"
+        class="icon arrow arrow-up"
+        onclick="location.href='./#about'"
+      />
       <p class="section__text__p1">Explore My</p>
       <h1 class="title">Experience</h1>
       <div class="experience-details-container">
@@ -258,82 +270,98 @@
       />
     </section>
     <section id="projects">
+      <img
+        src="./assets/arrow.png"
+        alt="Up arrow icon"
+        class="icon arrow arrow-up"
+        onclick="location.href='./#experience'"
+      />
       <p class="section__text__p1">Browse My Recent</p>
       <h1 class="title">Projects</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container color-container">
-            <div class="article-container">
+      <div class="projects-table">
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-media">
               <img
                 src="./assets/dalebotlogo.png"
-                alt="Project 1"
+                alt="CampusBuzz project preview"
                 class="project-img"
               />
+              <div class="project-overlay">
+                <h2 class="experience-sub-title project-title">CampusBuzz</h2>
+                <div class="btn-container project-links">
+                  <button
+                    class="btn btn-color-2 project-btn"
+                    onclick="window.open('https://github.com/lee4293/campusbuzz', '_blank')"
+                  >
+                    GitHub
+                  </button>
+                  <button
+                    class="btn btn-color-2 project-btn"
+                    onclick="window.open('https://campusbuzz.live/', '_blank')"
+                  >
+                    Live Demo
+                  </button>
+                </div>
+              </div>
             </div>
-            <h2 class="experience-sub-title project-title">CampusBuzz<br></h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/lee4293/campusbuzz'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://campusbuzz.live/'"
-              >
-                Website
-              </button>
-            </div>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
+          </article>
+
+          <article class="project-card">
+            <div class="project-media">
               <img
                 src="./assets/ChatBotImage.png"
-                alt="Project 2"
+                alt="Redalyze project preview"
                 class="project-img"
               />
+              <div class="project-overlay">
+                <h2 class="experience-sub-title project-title">Redalyze</h2>
+                <p class="project-status">In progress</p>
+                <div class="btn-container project-links">
+                  <button
+                    class="btn btn-color-2 project-btn"
+                    onclick="window.open('https://github.com/', '_blank')"
+                  >
+                    GitHub
+                  </button>
+                  <button
+                    class="btn btn-color-2 project-btn"
+                    onclick="window.open('https://github.com/', '_blank')"
+                  >
+                    Live Demo
+                  </button>
+                </div>
+              </div>
             </div>
-            <h2 class="experience-sub-title project-title">Redalyze<br>(IN PROGRESS)</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Live Demo
-              </button>
-            </div>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
+          </article>
+
+          <article class="project-card">
+            <div class="project-media">
               <img
                 src="./assets/MazeIMG.png"
-                alt="Project 3"
+                alt="Dijkstra's Pathfinder project preview"
                 class="project-img"
               />
+              <div class="project-overlay">
+                <h2 class="experience-sub-title project-title">Dijkstra's Pathfinder</h2>
+                <div class="btn-container project-links">
+                  <button
+                    class="btn btn-color-2 project-btn"
+                    onclick="window.open('https://github.com/lee4293/dijkstra-path', '_blank')"
+                  >
+                    GitHub
+                  </button>
+                  <button
+                    class="btn btn-color-2 project-btn"
+                    onclick="window.open('https://youtu.be/YV5tQthikD0?si=CPaW5j7vT6AHzofZ', '_blank')"
+                  >
+                    Live Demo
+                  </button>
+                </div>
+              </div>
             </div>
-            <h2 class="experience-sub-title project-title">Dijkstra's Pathfinder</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="window.open('https://github.com/lee4293/dijkstra-path', '_blank')"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="window.open('https://youtu.be/YV5tQthikD0?si=CPaW5j7vT6AHzofZ', '_blank')"
-              >
-                Live Demo
-              </button>
-            </div>
-          </div>
+          </article>
+
         </div>
       </div>
       <img
@@ -344,6 +372,12 @@
       />
     </section>
     <section id="contact">
+      <img
+        src="./assets/arrow.png"
+        alt="Up arrow icon"
+        class="icon arrow arrow-up"
+        onclick="location.href='./#projects'"
+      />
       <p class="section__text__p1">Get in Touch</p>
       <h1 class="title">Contact Me</h1>
       <div class="contact-info-upper-container">
