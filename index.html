@@ -4,437 +4,282 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Portfolio</title>
+    <title>Daniel Lee | Portfolio</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="mediaqueries.css" />
   </head>
   <body>
-    <nav id="desktop-nav">
-      <div class="logo">Daniel Lee</div>
-      <div>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+    <div class="page-shell">
+      <div class="scroll-progress" aria-hidden="true">
+        <span class="scroll-progress__bar"></span>
       </div>
-    </nav>
-    <nav id="hamburger-nav">
-      <div class="logo">Daniel Lee</div>
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="menu-links">
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-        </div>
-      </div>
-    </nav>
-    <section id="profile">
-      <div class="section__pic-container">
-        <img src="./assets/FrontHeadshot.png" alt="Daniel Lee profile picture" />
-      </div>
-      <div class="section__text">
-        <p class="section__text__p1">Hello, I'm</p>
-        <h1 class="title">Daniel Lee</h1>
-        <p class="section__text__p2">Software Engineer</p>
-        <div class="btn-container">
-          <button
-            class="btn btn-color-2"
-            onclick="window.open('./assets/ResumeDanielLee.pdf')"
-          >
-            Download CV
-          </button>
-          <button class="btn btn-color-1" onclick="location.href='./#contact'">
-            Contact Info
+
+      <header class="site-header">
+        <a class="brand" href="#home" aria-label="Daniel Lee home">
+          <span class="brand__mark">DL</span>
+          <span class="brand__text">Daniel Lee</span>
+        </a>
+
+        <div class="header-actions">
+          <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle>
+            <span></span>
+            <span></span>
           </button>
         </div>
-        <div id="socials-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon"
-            onclick="location.href='https://www.linkedin.com/in/lee4293/'"
-          />
-          <img
-            src="./assets/github.png"
-            alt="My Github profile"
-            class="icon"
-            onclick="location.href='https://github.com/lee4293'"
-          />
-        </div>
-      </div>
-    </section>
-    <section id="about">
-      <img
-        src="./assets/arrow.png"
-        alt="Up arrow icon"
-        class="icon arrow arrow-up"
-        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
-      />
-      <p class="section__text__p1">Get To Know More</p>
-      <h1 class="title">About Me</h1>
-      <div class="section-container">
-        <div class="section__pic-container">
-          <img
-            src="./assets/11zon_cropped.png"
-            alt="Profile picture"
-            class="about-pic"
-          />
-        </div>
-        <div class="about-details-container">
-          <div class="about-containers">
-            <div class="details-container">
-              <img
-                src="./assets/experience.png"
-                alt="Experience icon"
-                class="icon"
-              />
-              <h3>Experience</h3>
-              <p>2+ years</p>
-            </div>
-            <div class="details-container">
-              <img
-                src="./assets/education.png"
-                alt="Education icon"
-                class="icon"
-              />
-              <h3>Education</h3>
-              <p>Data Science, B.S. (Purdue University grad. 2026)</p>
-              <p>Computer Science, M.S. (University of California, Davis exp. 2028)</p>
-            </div>
-          </div>
-          <div class="text-container">
-            <p>
-              Hi! I'm a Class of 2026 graduate from <a href="https://www.purdue.edu/" target="_blank">Purdue University</a> with a Bachelor of Science in Data Science. I am now pursuing my Master's degree in Computer Science at the University of California, Davis (set to graduate in June 2028).
-              <br>
-              <br>
-              My professional experience includes two years of software and data engineering making data pipelines and optimizing systems. My interests include AI/ML applications in finance and construction as well as computer vision.
-              <br>
-              <br>
-              In my free time, I enjoy listening to and producing electronic music, playing chess, and following combat sports and bas.
-            </p>
-          </div>
-        </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#experience'"
-      />
-    </section>
-    <section id="experience">
-      <img
-        src="./assets/arrow.png"
-        alt="Up arrow icon"
-        class="icon arrow arrow-up"
-        onclick="location.href='./#about'"
-      />
-      <p class="section__text__p1">Explore My</p>
-      <h1 class="title">Experience</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container">
-            <h2 class="experience-sub-title">Programming Languages</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Java</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Python</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>SQL</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>R</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>C++</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>HTML/CSS</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-            </div>
-          </div>
-          <div class="details-container">
-            <h2 class="experience-sub-title">Developer Tools</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Microsoft Azure</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Node.js</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Jupyter Notebook/Lab</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Git</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>PyTorch</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Hugging Face Transformers</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#projects'"
-      />
-    </section>
-    <section id="projects">
-      <img
-        src="./assets/arrow.png"
-        alt="Up arrow icon"
-        class="icon arrow arrow-up"
-        onclick="location.href='./#experience'"
-      />
-      <p class="section__text__p1">Browse My Recent</p>
-      <h1 class="title">Projects</h1>
-      <p class="section__text__p4">Hover for image carousel</p>
-      <div class="projects-table">
-        <div class="projects-grid">
-          <article class="project-card">
-            <div class="project-media">
-              <img
-                src="./assets/blank-white.svg"
-                alt="Blank project preview"
-                class="project-img"
-              />
-              <div class="project-overlay">
-                <h2 class="experience-sub-title project-title">In progress</h2>
-                <div class="btn-container project-links">
-                  <button
-                    class="btn btn-color-2 project-btn"
-                    onclick="window.open('https://github.com', '_blank')"
-                  >
-                    GitHub
-                  </button>
-                  <button
-                    class="btn btn-color-2 project-btn"
-                    onclick="window.open('https://youtube.com', '_blank')"
-                  >
-                    Live Demo
-                  </button>
-                </div>
-              </div>
-            </div>
-          </article>
+      </header>
 
-          <article class="project-card">
-            <div class="project-media" data-project="campusbuzz">
-              <img
-                src="./assets/campusbuzz_home.png"
-                alt="CampusBuzz project preview"
-                class="project-img"
-              />
-              <div class="project-overlay">
-                <h2 class="experience-sub-title project-title">CampusBuzz</h2>
-                <div class="btn-container project-links">
-                  <button
-                    class="btn btn-color-2 project-btn"
-                    onclick="window.open('https://github.com/lee4293/campusbuzz', '_blank')"
-                  >
-                    GitHub
-                  </button>
-                  <button
-                    class="btn btn-color-2 project-btn"
-                    onclick="window.open('https://campusbuzz.live/', '_blank')"
-                  >
-                    Live Demo
-                  </button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-media" data-project="dijkstra">
-              <img
-                src="./assets/MazeIMG.png"
-                alt="Dijkstra's Pathfinder project preview"
-                class="project-img"
-              />
-              <div class="project-overlay">
-                <h2 class="experience-sub-title project-title">Dijkstra's Pathfinder</h2>
-                <div class="btn-container project-links">
-                  <button
-                    class="btn btn-color-2 project-btn"
-                    onclick="window.open('https://github.com/lee4293/dijkstra-path', '_blank')"
-                  >
-                    GitHub
-                  </button>
-                  <button
-                    class="btn btn-color-2 project-btn"
-                    onclick="window.open('https://youtu.be/YV5tQthikD0?si=CPaW5j7vT6AHzofZ', '_blank')"
-                  >
-                    Live Demo
-                  </button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-        </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#contact'"
-      />
-    </section>
-    <section id="contact">
-      <img
-        src="./assets/arrow.png"
-        alt="Up arrow icon"
-        class="icon arrow arrow-up"
-        onclick="location.href='./#projects'"
-      />
-      <p class="section__text__p1">Get in Touch</p>
-      <h1 class="title">Contact Me</h1>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <img
-            src="./assets/email.png"
-            alt="Email icon"
-            class="icon contact-icon email-icon"
-          />
-          <p><a href="mailto:examplemail@gmail.com">danlee4293@gmail.com</a></p>
-        </div>
-        <div class="contact-info-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="LinkedIn icon"
-            class="icon contact-icon"
-          />
-          <p><a href="https://www.linkedin.com/in/lee4293/">LinkedIn</a></p>
-        </div>
-      </div>
-    </section>
-    <footer>
-      <nav>
-        <div class="nav-links-container">
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
+      <nav class="section-rail" aria-label="Section shortcuts">
+        <button type="button" data-jump="#home" aria-label="Jump to top">Top</button>
+        <button type="button" data-jump="#about">About</button>
+        <button type="button" data-jump="#experience">Experience</button>
+        <button type="button" data-jump="#projects">Projects</button>
+        <button type="button" data-jump="#contact">Contact</button>
+        <button type="button" data-scroll-top>↑</button>
       </nav>
-      <p>Copyright &#169; 2025 Daniel Lee. All Rights Reserved.</p>
-    </footer>
+
+      <div class="mobile-drawer" hidden data-mobile-drawer>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a class="mobile-drawer__resume" href="./assets/ResumeDanielLee.pdf" target="_blank" rel="noreferrer">Resume</a>
+      </div>
+
+      <main>
+        <section id="home" class="hero section">
+          <div class="hero__copy">
+            <p class="eyebrow">Portfolio and Resume</p>
+            <h1>Daniel Lee</h1>
+            <p class="hero__lead">
+              Software engineer focused on data systems, ML applications, and polished product experiences.
+              I build tools that make technical work easier to use and more accessible.
+            </p>
+
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="#projects">Explore Projects</a>
+              <a class="btn btn--ghost" href="./assets/ResumeDanielLee.pdf" target="_blank" rel="noreferrer">Download Resume</a>
+            </div>
+
+            <div class="hero__stats">
+              <article class="stat-card">
+                <strong>2+ years</strong>
+                <span>software and data engineering experience</span>
+              </article>
+              <article class="stat-card">
+                <strong>MS @ UC Davis</strong>
+                <span>computer science, expected 2028</span>
+              </article>
+              <article class="stat-card">
+                <strong>AI / data / systems</strong>
+                <span>portfolio centered around practical product work</span>
+              </article>
+            </div>
+
+            <div class="social-row" aria-label="Social links">
+              <a href="https://www.linkedin.com/in/lee4293/" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a href="https://github.com/lee4293" target="_blank" rel="noreferrer">GitHub</a>
+              <a href="mailto:danlee4293@gmail.com">Email</a>
+            </div>
+          </div>
+
+          <div class="hero__visual">
+            <div class="hero-card">
+              <img src="./assets/FrontHeadshot.png" alt="Daniel Lee profile picture" />
+              <div class="hero-card__meta">
+                <span class="status-dot"></span>
+                Open to software, data, and ML product opportunities
+              </div>
+            </div>
+            <div class="floating-note">
+              <p>Current focus</p>
+              <strong>Building portfolio-ready projects with practical value</strong>
+            </div>
+          </div>
+        </section>
+
+        <section id="about" class="section panel">
+          <div class="section-heading">
+            <p class="eyebrow">Get to know more</p>
+            <h2>About</h2>
+          </div>
+
+          <div class="about-grid">
+            <article class="about-card about-card--bio">
+              <div class="about-card__image">
+                <img src="./assets/11zon_cropped.png" alt="Daniel Lee portrait" />
+              </div>
+              <div class="about-card__content">
+                <p>
+                  I graduated from <a href="https://www.purdue.edu/" target="_blank" rel="noreferrer">Purdue University</a>
+                  in 2026 with a B.S. in Data Science and am now pursuing an M.S. in Computer Science at the <a href="https://www.ucdavis.edu/" 
+                  target="_blank" rel="noreferrer">University of California, Davis</a> with an expected graduation date of 2028. 
+                  My work sits at the intersection of software engineering, data engineering, and
+                  applied machine learning. <br> <br> I like creating products that make life easier. My hobbies include
+                  listening to and producing electronic music, playing chess, and following the UFC and NBA. 
+                </p>
+              </div>
+            </article>
+
+            <article class="about-card about-card--highlights">
+              <div class="mini-card">
+                <span>Education</span>
+                <strong>Data Science, B.S.</strong>
+                <strong>Computer Science, M.S.</strong>
+              </div>
+              <div class="mini-card">
+                <span>What I build</span>
+                <strong>Data pipelines</strong>
+                <strong>ML tooling</strong>
+                <strong>Fast, usable web apps</strong>
+              </div>
+              <div class="mini-card">
+                <span>Tools I use</span>
+                <div class="tag-list">
+                  <span>Python</span>
+                  <span>Java</span>
+                  <span>SQL</span>
+                  <span>PyTorch</span>
+                  <span>Azure</span>
+                  <span>Node.js</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="experience" class="section panel">
+          <div class="section-heading">
+            <p class="eyebrow">Explore my stack</p>
+            <h2>Experience</h2>
+          </div>
+
+          <div class="experience-grid">
+            <article class="experience-card">
+              <h3>Programming Languages</h3>
+              <div class="skill-list">
+                <div class="skill-item"><span>Java</span><em>Experienced</em></div>
+                <div class="skill-item"><span>Python</span><em>Experienced</em></div>
+                <div class="skill-item"><span>SQL</span><em>Intermediate</em></div>
+                <div class="skill-item"><span>R</span><em>Intermediate</em></div>
+                <div class="skill-item"><span>C++</span><em>Intermediate</em></div>
+                <div class="skill-item"><span>HTML / CSS</span><em>Intermediate</em></div>
+              </div>
+            </article>
+
+            <article class="experience-card">
+              <h3>Developer Tools</h3>
+              <div class="skill-list">
+                <div class="skill-item"><span>Microsoft Azure</span><em>Intermediate</em></div>
+                <div class="skill-item"><span>Node.js</span><em>Intermediate</em></div>
+                <div class="skill-item"><span>Jupyter Notebook / Lab</span><em>Experienced</em></div>
+                <div class="skill-item"><span>Git</span><em>Intermediate</em></div>
+                <div class="skill-item"><span>PyTorch</span><em>Intermediate</em></div>
+                <div class="skill-item"><span>Hugging Face Transformers</span><em>Intermediate</em></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="projects" class="section panel">
+          <div class="section-heading section-heading--split">
+            <div>
+              <p class="eyebrow">Selected work</p>
+              <h2>Projects</h2>
+            </div>
+            <p class="section-note">Hover or focus a card to cycle supported previews.</p>
+          </div>
+
+          <div class="projects-grid">
+            <article class="project-card">
+              <div class="project-media" data-project="campusbuzz">
+                <img src="./assets/campusbuzz_home.png" alt="CampusBuzz project preview" class="project-img" />
+                <div class="project-overlay">
+                  <span class="project-kicker">Featured product</span>
+                  <h3>CampusBuzz</h3>
+                  <p>A campus discovery platform built to surface events, fairs, and portfolio-style content.</p>
+                  <div class="btn-row">
+                    <a class="btn btn--small" href="https://github.com/lee4293/campusbuzz" target="_blank" rel="noreferrer">GitHub</a>
+                    <a class="btn btn--small btn--ghost" href="https://campusbuzz.live/" target="_blank" rel="noreferrer">Live Demo</a>
+                  </div>
+                </div>
+              </div>
+              <div class="project-body">
+                <h3>CampusBuzz</h3>
+                <p>Web app for event discovery and student engagement with a carousel of in-app views.</p>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="project-media" data-project="dijkstra">
+                <img src="./assets/MazeIMG.png" alt="Dijkstra's Pathfinder project preview" class="project-img" />
+                <div class="project-overlay">
+                  <span class="project-kicker">Algorithms showcase</span>
+                  <h3>Dijkstra's Pathfinder</h3>
+                  <p>Interactive shortest-path visualizer that demonstrates algorithm behavior step by step.</p>
+                  <div class="btn-row">
+                    <a class="btn btn--small" href="https://github.com/lee4293/dijkstra-path" target="_blank" rel="noreferrer">GitHub</a>
+                    <a class="btn btn--small btn--ghost" href="https://youtu.be/YV5tQthikD0?si=CPaW5j7vT6AHzofZ" target="_blank" rel="noreferrer">Live Demo</a>
+                  </div>
+                </div>
+              </div>
+              <div class="project-body">
+                <h3>Dijkstra's Pathfinder</h3>
+                <p>Algorithm visualizer built around graph search, clarity, and interactive teaching.</p>
+              </div>
+            </article>
+
+            <article class="project-card project-card--ghost">
+              <div class="project-media project-media--placeholder" data-project="spotlight">
+                <img src="./assets/blank-white.svg" alt="Project in progress preview" class="project-img" />
+                <div class="project-overlay">
+                  <span class="project-kicker">In progress</span>
+                  <h3>Next build</h3>
+                  <p>A future project slot reserved for the next portfolio piece, experiment, or case study.</p>
+                  <div class="btn-row">
+                    <a class="btn btn--small" href="#contact">Ask about it</a>
+                  </div>
+                </div>
+              </div>
+              <div class="project-body">
+                <h3>Next build</h3>
+                <p>An open slot for the next project, demo, or technical story.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="contact" class="section panel contact-panel">
+          <div class="section-heading section-heading--split">
+            <div>
+              <p class="eyebrow">Let’s connect</p>
+              <h2>Contact</h2>
+            </div>
+          </div>
+
+          <div class="contact-grid">
+            <article class="contact-card">
+              <span>Primary email</span>
+              <a href="mailto:danlee4293@gmail.com">danlee4293@gmail.com</a>
+              <button class="btn btn--small btn--ghost" type="button" data-copy-email>Copy address</button>
+            </article>
+            <article class="contact-card">
+              <span>Professional network</span>
+              <a href="https://www.linkedin.com/in/lee4293/" target="_blank" rel="noreferrer">LinkedIn</a>
+              <p>Connect with me on LinkedIn to see my professional experience.</p>
+            </article>
+            <article class="contact-card">
+              <span>Code repository</span>
+              <a href="https://github.com/lee4293" target="_blank" rel="noreferrer">GitHub profile</a>
+              <p>Browse active projects, experiments, and code samples.</p>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>Copyright &#169; 2026 Daniel Lee. All Rights Reserved.</p>
+      </footer>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
