@@ -2,6 +2,7 @@ const mobileDrawer = document.querySelector("[data-mobile-drawer]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const progressBar = document.querySelector(".scroll-progress__bar");
 const scrollTopButton = document.querySelector("[data-scroll-top]");
+const homeJumpButton = document.querySelector("[data-home-jump]");
 const copyButtons = document.querySelectorAll("[data-copy-email]");
 const sectionLinks = document.querySelectorAll("[data-jump], .site-nav a, .mobile-drawer a");
 const sections = [...document.querySelectorAll("main section[id]")];
@@ -42,6 +43,10 @@ function updateProgress() {
 }
 
 function updateActiveSection(currentId) {
+  if (homeJumpButton) {
+    homeJumpButton.hidden = currentId === "home"; 
+  }
+
   sectionLinks.forEach((link) => {
     const href = link.getAttribute("href") || link.dataset.jump;
     if (!href) {
