@@ -1,7 +1,6 @@
 const mobileDrawer = document.querySelector("[data-mobile-drawer]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const progressBar = document.querySelector(".scroll-progress__bar");
-const scrollTopButton = document.querySelector("[data-scroll-top]");
 const homeJumpButton = document.querySelector("[data-home-jump]");
 const copyButtons = document.querySelectorAll("[data-copy-email]");
 const sectionLinks = document.querySelectorAll("[data-jump], .site-nav a, .mobile-drawer a");
@@ -37,9 +36,6 @@ function updateProgress() {
   const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
   progressBar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
 
-  if (scrollTopButton) {
-    scrollTopButton.classList.toggle("is-visible", window.scrollY > 400);
-  }
 }
 
 function updateActiveSection(currentId) {
@@ -111,12 +107,9 @@ document.addEventListener("click", (event) => {
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     toggleMobileMenu(false);
+    closeProjectModal();
   }
 });
-
-if (scrollTopButton) {
-  scrollTopButton.addEventListener("click", () => scrollToSection("#home"));
-}
 
 copyButtons.forEach((button) => {
   button.addEventListener("click", async () => {
@@ -168,6 +161,140 @@ const projectSlides = {
 };
 
 const projectStates = new WeakMap();
+const projectModal = document.querySelector("[data-project-modal]");
+const projectModalDialog = projectModal?.querySelector(".project-modal__dialog");
+const projectModalKicker = document.querySelector("[data-project-modal-kicker]");
+const projectModalTitle = document.querySelector("[data-project-modal-title]");
+const projectModalDescription = document.querySelector("[data-project-modal-description]");
+const projectModalUsers = document.querySelector("[data-project-modal-users]");
+const projectModalGithub = document.querySelector("[data-project-modal-github]");
+const projectModalDemo = document.querySelector("[data-project-modal-demo]");
+const projectModalTabs = [...document.querySelectorAll("[data-project-modal-tab]")];
+const projectModalPanels = [...document.querySelectorAll("[data-project-modal-panel]")];
+let projectModalTrigger = null;
+
+function selectProjectModalTab(tabName) {
+  projectModalTabs.forEach((tab) => {
+    tab.setAttribute("aria-selected", String(tab.dataset.projectModalTab === tabName));
+  });
+
+  projectModalPanels.forEach((panel) => {
+    panel.hidden = panel.dataset.projectModalPanel !== tabName;
+  });
+}
+
+function configureProjectModalAction(action, sourceLink) {
+  if (!action) {
+    return;
+  }
+
+  if (sourceLink) {
+    action.href = sourceLink.href;
+    action.classList.remove("is-disabled");
+    action.removeAttribute("aria-disabled");
+    action.removeAttribute("tabindex");
+  } else {
+    action.removeAttribute("href");
+    action.classList.add("is-disabled");
+    action.setAttribute("aria-disabled", "true");
+    action.setAttribute("tabindex", "-1");
+  }
+}
+
+function openProjectModal(projectCard, trigger) {
+  if (!projectModal || !projectModalKicker || !projectModalTitle || !projectModalDescription || !projectModalUsers) {
+    return;
+  }
+
+  const overlay = projectCard.querySelector(".project-overlay");
+  const actionLinks = [...projectCard.querySelectorAll(".btn-row a")];
+  const githubLink = actionLinks.find((link) => link.href.includes("github.com"));
+  const demoLink = actionLinks.find((link) => link.textContent.trim().toLowerCase() === "live demo");
+  const users = (projectCard.dataset.projectUsers || "People exploring this type of project")
+    .split("|")
+    .map((user) => user.trim())
+    .filter(Boolean);
+
+  projectModalKicker.textContent = overlay?.querySelector(".project-kicker")?.textContent || "Project";
+  projectModalTitle.textContent = overlay?.querySelector("h3")?.textContent || "Project details";
+  projectModalDescription.textContent = projectCard.dataset.projectModalDescription || "More project details coming soon.";
+  projectModalUsers.replaceChildren(...users.map((user) => {
+    const item = document.createElement("li");
+    item.textContent = user;
+    return item;
+  }));
+
+  configureProjectModalAction(projectModalGithub, githubLink);
+  configureProjectModalAction(projectModalDemo, demoLink);
+  selectProjectModalTab("overview");
+
+  projectModalTrigger = trigger;
+  projectModal.hidden = false;
+  document.body.classList.add("is-modal-open");
+  projectModal.querySelector(".project-modal__close")?.focus();
+}
+
+function closeProjectModal() {
+  if (!projectModal || projectModal.hidden) {
+    return;
+  }
+
+  projectModal.hidden = true;
+  document.body.classList.remove("is-modal-open");
+  projectModalTrigger?.focus();
+  projectModalTrigger = null;
+}
+
+function addProjectExpandButton(projectCard) {
+  const buttonRow = projectCard.querySelector(".project-overlay .btn-row");
+  if (!buttonRow || buttonRow.querySelector("[data-project-expand]")) {
+    return;
+  }
+
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "btn btn--small btn--expand";
+  button.dataset.projectExpand = "";
+  button.textContent = "Expand";
+  buttonRow.append(button);
+}
+
+projectModalTabs.forEach((tab) => {
+  tab.addEventListener("click", () => selectProjectModalTab(tab.dataset.projectModalTab));
+});
+
+document.addEventListener("click", (event) => {
+  const expandButton = event.target.closest("[data-project-expand]");
+  if (expandButton) {
+    const projectCard = expandButton.closest(".project-card");
+    if (projectCard) {
+      openProjectModal(projectCard, expandButton);
+    }
+    return;
+  }
+
+  if (event.target.closest("[data-project-modal-close]")) {
+    closeProjectModal();
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Tab" || !projectModal || projectModal.hidden || !projectModalDialog) {
+    return;
+  }
+
+  const focusableElements = [...projectModalDialog.querySelectorAll("button:not([disabled]), a[href]:not([aria-disabled='true'])")];
+  const firstElement = focusableElements[0];
+  const lastElement = focusableElements.at(-1);
+
+  if (event.shiftKey && document.activeElement === firstElement) {
+    event.preventDefault();
+    lastElement?.focus();
+  } else if (!event.shiftKey && document.activeElement === lastElement) {
+    event.preventDefault();
+    firstElement?.focus();
+  }
+});
 
 function startProjectCarousel(projectCard) {
   const existingState = projectStates.get(projectCard);
@@ -238,7 +365,13 @@ function stopProjectCarousel(projectCard) {
   projectStates.delete(projectCard);
 }
 
-document.querySelectorAll(".project-card").forEach((projectCard) => {
+function initializeProjectCard(projectCard) {
+  if (projectCard.dataset.projectInitialized === "true") {
+    return;
+  }
+
+  projectCard.dataset.projectInitialized = "true";
+  addProjectExpandButton(projectCard);
   projectCard.addEventListener("mouseenter", () => startProjectCarousel(projectCard));
   projectCard.addEventListener("mouseleave", () => stopProjectCarousel(projectCard));
   projectCard.addEventListener("focusin", () => startProjectCarousel(projectCard));
@@ -247,7 +380,31 @@ document.querySelectorAll(".project-card").forEach((projectCard) => {
       stopProjectCarousel(projectCard);
     }
   });
+}
+
+document.querySelectorAll(".project-card").forEach((projectCard) => {
+  initializeProjectCard(projectCard);
 });
+
+const projectsGrid = document.querySelector(".projects-grid");
+if (projectsGrid) {
+  const projectObserver = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      mutation.addedNodes.forEach((node) => {
+        if (!(node instanceof Element)) {
+          return;
+        }
+
+        if (node.matches(".project-card")) {
+          initializeProjectCard(node);
+        }
+        node.querySelectorAll?.(".project-card").forEach(initializeProjectCard);
+      });
+    });
+  });
+
+  projectObserver.observe(projectsGrid, { childList: true, subtree: true });
+}
 
 window.addEventListener("scroll", updateProgress, { passive: true });
 window.addEventListener("resize", updateProgress, { passive: true });

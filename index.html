@@ -34,7 +34,6 @@
         <button type="button" data-jump="#experience">Experience</button>
         <button type="button" data-jump="#projects">Projects</button>
         <button type="button" data-jump="#contact">Contact</button>
-        <button type="button" data-scroll-top>↑</button>
       </nav>
 
       <div class="mobile-drawer" hidden data-mobile-drawer>
@@ -71,7 +70,7 @@
               </article>
               <article class="stat-card">
                 <strong>Interests</strong>
-                <span>Applied ML, Cloud Infrastructure</span>
+                <span>Applied ML, Agentic AI, Cloud Infrastructure</span>
               </article>
             </div>
 
@@ -85,14 +84,18 @@
           <div class="hero__visual">
             <div class="hero-card">
               <img src="./assets/headshot.JPEG" alt="Daniel Lee profile picture" />
-              <div class="hero-card__meta">
-                <span class="status-dot"></span>
-                Open to software, data, and ML product opportunities
-              </div>
             </div>
-            <div class="floating-note">
-              <p>Current focus</p>
-              <strong>Building portfolio-ready projects with practical value</strong>
+            <div class="floating-note" tabindex="0" aria-label="Current focus and opportunity status">
+              <div class="focus-note__track">
+                <div class="focus-note__state focus-note__state--primary">
+                  <p>Current focus</p>
+                  <strong>Building portfolio-ready projects with practical value</strong>
+                </div>
+                <div class="focus-note__state focus-note__state--alternate">
+                  <p class="focus-note__label"><span class="status-dot"></span>Open to opportunities</p>
+                  <strong>Software, data, and AI/ML roles in tech and finance</strong>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -190,7 +193,11 @@
           </div>
 
           <div class="projects-grid">
-            <article class="project-card">
+            <article
+              class="project-card"
+              data-project-users="Students|Career fair corporate representatives|Campus event organizers"
+              data-project-modal-description="CampusBuzz is a campus discovery platform designed to help students find events and career fairs while giving corporate representatives a focused way to present opportunities and connect with attendees."
+            >
               <div class="project-media" data-project="campusbuzz">
                 <img src="./assets/campusbuzz_home.png" alt="CampusBuzz project preview" class="project-img" />
                 <div class="project-overlay">
@@ -205,7 +212,11 @@
               </div>
             </article>
 
-            <article class="project-card">
+            <article
+              class="project-card"
+              data-project-users="Teachers|Students|Computer science learners"
+              data-project-modal-description="PathLab is an interactive shortest-path visualizer that makes route-finding algorithms easier to teach and study by showing their behavior step by step on a grid."
+            >
               <div class="project-media" data-project="pathlab">
                 <img src="./assets/pathlab.png" alt="PathLab project preview" class="project-img" />
                 <div class="project-overlay">
@@ -220,7 +231,11 @@
               </div>
             </article>
 
-            <article class="project-card project-card--ghost">
+            <article
+              class="project-card project-card--ghost"
+              data-project-users="Early adopters|Product collaborators|Recruiters and engineering teams"
+              data-project-modal-description="Seam is currently in development. This project space will be updated with a complete overview, technical details, and working links as the product becomes ready to share."
+            >
               <div class="project-media project-media--placeholder" data-project="spotlight">
                 <img src="./assets/blank-white.svg" alt="Project in progress preview" class="project-img" />
                 <div class="project-overlay">
@@ -268,6 +283,35 @@
         <p>Copyright &#169; 2027 Daniel Lee. All Rights Reserved.</p>
       </footer>
     </div>
+
+    <div class="project-modal" data-project-modal hidden>
+      <div class="project-modal__backdrop" data-project-modal-close></div>
+      <section class="project-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+        <button class="project-modal__close" type="button" aria-label="Close project details" data-project-modal-close>&times;</button>
+
+        <span class="project-kicker" data-project-modal-kicker></span>
+        <h2 id="project-modal-title" data-project-modal-title></h2>
+
+        <div class="project-modal__tabs" role="tablist" aria-label="Project information">
+          <button type="button" role="tab" aria-selected="true" aria-controls="project-modal-overview" data-project-modal-tab="overview">Overview</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="project-modal-users" data-project-modal-tab="users">Users</button>
+        </div>
+
+        <div id="project-modal-overview" class="project-modal__panel" role="tabpanel" data-project-modal-panel="overview">
+          <p data-project-modal-description></p>
+          <div class="project-modal__actions">
+            <a class="btn btn--small" target="_blank" rel="noreferrer" data-project-modal-github>GitHub</a>
+            <a class="btn btn--small btn--ghost" target="_blank" rel="noreferrer" data-project-modal-demo>Live Demo</a>
+          </div>
+        </div>
+
+        <div id="project-modal-users" class="project-modal__panel" role="tabpanel" data-project-modal-panel="users" hidden>
+          <p>People who may find this project useful:</p>
+          <ul class="project-modal__users" data-project-modal-users></ul>
+        </div>
+      </section>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>

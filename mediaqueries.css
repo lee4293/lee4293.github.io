@@ -78,6 +78,23 @@
     width: 100%;
   }
 
+  .project-modal {
+    padding: 14px;
+  }
+
+  .project-modal__dialog {
+    padding: 24px 20px;
+    border-radius: 24px;
+  }
+
+  .project-modal__actions {
+    flex-direction: column;
+  }
+
+  .project-modal__actions .btn {
+    width: 100%;
+  }
+
   .about-card__image img,
   .project-media {
     min-height: 240px;
