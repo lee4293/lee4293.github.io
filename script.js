@@ -165,7 +165,7 @@ const projectModal = document.querySelector("[data-project-modal]");
 const projectModalDialog = projectModal?.querySelector(".project-modal__dialog");
 const projectModalKicker = document.querySelector("[data-project-modal-kicker]");
 const projectModalTitle = document.querySelector("[data-project-modal-title]");
-const projectModalDescription = document.querySelector("[data-project-modal-description]");
+const projectModalDescription = projectModal?.querySelector("[data-project-modal-description]");
 const projectModalUsers = document.querySelector("[data-project-modal-users]");
 const projectModalGithub = document.querySelector("[data-project-modal-github]");
 const projectModalDemo = document.querySelector("[data-project-modal-demo]");
@@ -217,7 +217,7 @@ function openProjectModal(projectCard, trigger) {
 
   projectModalKicker.textContent = overlay?.querySelector(".project-kicker")?.textContent || "Project";
   projectModalTitle.textContent = overlay?.querySelector("h3")?.textContent || "Project details";
-  projectModalDescription.textContent = projectCard.dataset.projectModalDescription || "More project details coming soon.";
+  projectModalDescription.textContent = projectCard.dataset.expandedDescription || "More project details coming soon.";
   projectModalUsers.replaceChildren(...users.map((user) => {
     const item = document.createElement("li");
     item.textContent = user;
