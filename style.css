@@ -352,6 +352,132 @@ main {
   margin-top: 28px;
 }
 
+.resume-menu-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.resume-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  z-index: 20;
+  display: grid;
+  min-width: 220px;
+  padding: 10px;
+  border-radius: 18px;
+  background: rgba(9, 18, 30, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow);
+}
+
+.resume-menu[hidden] {
+  display: none;
+}
+
+.resume-menu a,
+.resume-menu button {
+  width: 100%;
+  padding: 12px 14px;
+  border: 0;
+  border-radius: 12px;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.02);
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+
+.resume-menu a:hover,
+.resume-menu button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.resume-trigger__caret {
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-1px);
+  display: inline-block;
+  transition: transform 180ms ease;
+}
+
+.resume-menu-wrap.is-open .resume-trigger__caret {
+  transform: rotate(225deg) translateY(-1px);
+}
+
+.resume-modal,
+.project-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+}
+
+.resume-modal[hidden],
+.project-modal[hidden] {
+  display: none;
+}
+
+.resume-modal__backdrop,
+.project-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 6, 12, 0.72);
+}
+
+.resume-modal__dialog,
+.project-modal__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(1100px, calc(100vw - 32px));
+  max-height: min(90vh, 920px);
+  margin: 5vh auto;
+  border-radius: 28px;
+  background: rgba(7, 17, 28, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.resume-modal__header,
+.project-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.resume-modal__header h2,
+.project-modal__dialog h2 {
+  margin: 0;
+  color: var(--text);
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.resume-modal__close,
+.project-modal__close {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.resume-modal__dialog iframe {
+  width: 100%;
+  height: min(80vh, 820px);
+  border: 0;
+  background: white;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;

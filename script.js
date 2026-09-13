@@ -5,6 +5,47 @@ const homeJumpButton = document.querySelector("[data-home-jump]");
 const copyButtons = document.querySelectorAll("[data-copy-email]");
 const sectionLinks = document.querySelectorAll("[data-jump], .site-nav a, .mobile-drawer a");
 const sections = [...document.querySelectorAll("main section[id]")];
+const resumeMenuWrap = document.querySelector("[data-resume-menu-wrap]");
+const resumeMenuTrigger = document.querySelector("[data-resume-menu-trigger]");
+const resumeMenu = document.querySelector("[data-resume-menu]");
+const resumeModal = document.querySelector("[data-resume-modal]");
+const resumeOpenButton = document.querySelector("[data-resume-open]");
+
+function toggleResumeMenu(forceState) {
+  if (!resumeMenuWrap || !resumeMenuTrigger || !resumeMenu) {
+    return;
+  }
+
+  const nextOpen = typeof forceState === "boolean" ? forceState : resumeMenu.hidden;
+  resumeMenu.hidden = !nextOpen;
+  resumeMenuWrap.classList.toggle("is-open", nextOpen);
+  resumeMenuTrigger.setAttribute("aria-expanded", String(nextOpen));
+}
+
+function closeResumeMenu() {
+  toggleResumeMenu(false);
+}
+
+function openResumeModal() {
+  if (!resumeModal) {
+    window.open("./assets/ResumeDanielLee.pdf", "_blank", "noopener,noreferrer");
+    return;
+  }
+
+  resumeModal.hidden = false;
+  document.body.classList.add("is-modal-open");
+  resumeModal.querySelector(".resume-modal__close")?.focus();
+}
+
+function closeResumeModal() {
+  if (!resumeModal || resumeModal.hidden) {
+    return;
+  }
+
+  resumeModal.hidden = true;
+  document.body.classList.remove("is-modal-open");
+  resumeMenuTrigger?.focus();
+}
 
 function toggleMobileMenu(forceState) {
   if (!mobileDrawer || !menuToggle) {
@@ -95,11 +136,38 @@ if (menuToggle) {
   menuToggle.addEventListener("click", () => toggleMobileMenu());
 }
 
+if (resumeMenuTrigger) {
+  resumeMenuTrigger.addEventListener("click", (event) => {
+    event.stopPropagation();
+    toggleResumeMenu();
+  });
+}
+
+if (resumeOpenButton) {
+  resumeOpenButton.addEventListener("click", () => {
+    closeResumeMenu();
+    openResumeModal();
+  });
+}
+
 document.addEventListener("click", (event) => {
+  const target = event.target;
+
   if (mobileDrawer && menuToggle && !mobileDrawer.hidden) {
-    const target = event.target;
     if (!mobileDrawer.contains(target) && !menuToggle.contains(target)) {
       toggleMobileMenu(false);
+    }
+  }
+
+  if (resumeMenuWrap && resumeMenu && !resumeMenu.hidden) {
+    if (!resumeMenuWrap.contains(target)) {
+      closeResumeMenu();
+    }
+  }
+
+  if (resumeModal && !resumeModal.hidden) {
+    if (target.closest("[data-resume-modal-close]")) {
+      closeResumeModal();
     }
   }
 });
@@ -107,6 +175,8 @@ document.addEventListener("click", (event) => {
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     toggleMobileMenu(false);
+    closeResumeMenu();
+    closeResumeModal();
     closeProjectModal();
   }
 });

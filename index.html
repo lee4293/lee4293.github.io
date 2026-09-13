@@ -41,7 +41,7 @@
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
-        <a class="mobile-drawer__resume" href="./assets/PORTFOLIO_ResumeDanielLee.pdf" target="_blank" rel="noreferrer">Resume</a>
+        <a class="mobile-drawer__resume" href="./assets/ResumeDanielLee.pdf" target="_blank" rel="noreferrer">Resume</a>
       </div>
 
       <main>
@@ -56,7 +56,24 @@
 
             <div class="hero__actions">
               <a class="btn btn--primary" href="#projects">Explore Projects</a>
-              <a class="btn btn--ghost" href="./assets/ResumeDanielLee.pdf" target="_blank" rel="noreferrer">Download Resume</a>
+
+              <div class="resume-menu-wrap" data-resume-menu-wrap>
+                <button
+                  class="btn btn--ghost"
+                  type="button"
+                  data-resume-menu-trigger
+                  aria-expanded="false"
+                  aria-haspopup="menu"
+                >
+                  <span>Resume</span>
+                  <span class="resume-trigger__caret" aria-hidden="true"></span>
+                </button>
+
+                <div class="resume-menu" data-resume-menu hidden>
+                  <button type="button" data-resume-open>View Resume</button>
+                  <a href="./assets/ResumeDanielLee.pdf" target="_blank" rel="noreferrer" download>Download PDF</a>
+                </div>
+              </div>
             </div>
 
             <div class="hero__stats">
@@ -310,6 +327,17 @@
           <p>People who may find this project useful:</p>
           <ul class="project-modal__users" data-project-modal-users></ul>
         </div>
+      </section>
+    </div>
+
+    <div class="resume-modal" data-resume-modal hidden>
+      <div class="resume-modal__backdrop" data-resume-modal-close></div>
+      <section class="resume-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title">
+        <div class="resume-modal__header">
+          <h2 id="resume-modal-title">Resume</h2>
+          <button class="resume-modal__close" type="button" aria-label="Close resume" data-resume-modal-close>&times;</button>
+        </div>
+        <iframe src="./assets/ResumeDanielLee.pdf" title="Daniel Lee resume" loading="lazy"></iframe>
       </section>
     </div>
 
