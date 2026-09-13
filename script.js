@@ -227,6 +227,11 @@ const projectSlides = {
     "./assets/campusbuzz_portfolio.png",
   ],
   dijkstra: ["./assets/MazeIMG.png"],
+  nuveri: [
+    "./assets/nuverilogo_filled.png",
+    "./assets/NuveriAnalysisPage.png",
+    "./assets/NuveriDashboardPage.png",
+  ],
   spotlight: [createPlaceholderImage("Next build", ["#1e293b", "#0f172a", "#08111c"])],
 };
 
@@ -260,11 +265,13 @@ function configureProjectModalAction(action, sourceLink) {
 
   if (sourceLink) {
     action.href = sourceLink.href;
+    action.textContent = sourceLink.textContent.trim();
     action.classList.remove("is-disabled");
     action.removeAttribute("aria-disabled");
     action.removeAttribute("tabindex");
   } else {
     action.removeAttribute("href");
+    action.textContent = action.dataset.defaultLabel || "More details";
     action.classList.add("is-disabled");
     action.setAttribute("aria-disabled", "true");
     action.setAttribute("tabindex", "-1");
@@ -279,7 +286,10 @@ function openProjectModal(projectCard, trigger) {
   const overlay = projectCard.querySelector(".project-overlay");
   const actionLinks = [...projectCard.querySelectorAll(".btn-row a")];
   const githubLink = actionLinks.find((link) => link.href.includes("github.com"));
-  const demoLink = actionLinks.find((link) => link.textContent.trim().toLowerCase() === "live demo");
+  const demoLink = actionLinks.find((link) => {
+    const label = link.textContent.trim().toLowerCase();
+    return label === "live demo" || label === "website";
+  });
   const users = (projectCard.dataset.projectUsers || "People exploring this type of project")
     .split("|")
     .map((user) => user.trim())
