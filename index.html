@@ -2,363 +2,266 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Daniel Lee | Portfolio</title>
+    <link rel="icon" href="data:," />
+    <script>document.documentElement.classList.add("js");</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&display=swap"
+    />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="mediaqueries.css" />
   </head>
   <body>
-    <div class="page-shell">
-      <div class="scroll-progress" aria-hidden="true">
-        <span class="scroll-progress__bar"></span>
-      </div>
+    <a class="skip-link" href="#reader">Skip to content</a>
 
-      <header class="site-header">
-        <a class="brand" href="#home" aria-label="Daniel Lee home">
-          <span class="brand__mark">DL</span>
-          <span class="brand__text">Daniel Lee</span>
+    <div class="app" data-app data-view="reader">
+      <!-- Index: every item on the site, like a mail client's message list. -->
+      <aside class="index" id="index" aria-label="Site index" data-index>
+        <a class="index__brand" href="#overview">
+          <span class="index__mark" aria-hidden="true">DL</span>
+          <span class="index__brand-text">
+            <span>Daniel Lee</span>
+            <span class="index__brand-sub">Portfolio and Resume</span>
+          </span>
         </a>
 
-        <div class="header-actions">
-          <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle>
-            <span></span>
-            <span></span>
-          </button>
-        </div>
-      </header>
+        <nav class="index__nav" aria-label="Site sections" data-index-nav>
+          <span class="index__marker" aria-hidden="true" data-index-marker></span>
 
-      <nav class="section-rail" aria-label="Section shortcuts">
-        <button type="button" data-jump="#home" data-home-jump aria-label="Jump to top" hidden>Top</button>
-        <button type="button" data-jump="#about">About</button>
-        <button type="button" data-jump="#experience">Experience</button>
-        <button type="button" data-jump="#projects">Projects</button>
-        <button type="button" data-jump="#contact">Contact</button>
-      </nav>
+          <ul class="index__list">
+            <li><a class="index__item" href="#overview" data-route="overview">Overview</a></li>
+          </ul>
 
-      <div class="mobile-drawer" hidden data-mobile-drawer>
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-        <a class="mobile-drawer__resume" href="./assets/ResumeDanielLee.pdf" target="_blank" rel="noreferrer">Resume</a>
-      </div>
+          <p class="index__group" id="index-featured-label">Selected work</p>
+          <ul class="index__list index__list--featured" aria-labelledby="index-featured-label" data-index-featured></ul>
 
-      <main>
-        <section id="home" class="hero section">
-          <div class="hero__copy">
-            <p class="eyebrow">Portfolio and Resume</p>
-            <h1>Daniel Lee</h1>
-            <p class="hero__lead">
-              Software engineer focused on data systems, ML applications, and polished product experiences.
-              I build tools that make technical work easier to use and more accessible.
-            </p>
+          <p class="index__group" id="index-rest-label" data-index-rest-label>More projects</p>
+          <ul class="index__list" aria-labelledby="index-rest-label" data-index-rest></ul>
 
-            <div class="hero__actions">
-              <a class="btn btn--primary" href="#projects">Explore Projects</a>
+          <p class="index__group" id="index-me-label">About me</p>
+          <ul class="index__list" aria-labelledby="index-me-label">
+            <li><a class="index__item" href="#about" data-route="about">About</a></li>
+            <li><a class="index__item" href="#experience" data-route="experience">Experience</a></li>
+            <li><a class="index__item" href="#contact" data-route="contact">Contact</a></li>
+            <li><a class="index__item" href="#resume" data-route="resume">Resume</a></li>
+          </ul>
 
-              <div class="resume-menu-wrap" data-resume-menu-wrap>
-                <button
-                  class="btn btn--ghost"
-                  type="button"
-                  data-resume-menu-trigger
-                  aria-expanded="false"
-                  aria-haspopup="menu"
-                >
-                  <span>Resume</span>
-                  <span class="resume-trigger__caret" aria-hidden="true"></span>
-                </button>
+          <noscript>
+            <p class="index__noscript">Projects need JavaScript. Browse them on <a href="https://github.com/lee4293">GitHub</a>.</p>
+          </noscript>
+        </nav>
 
-                <div class="resume-menu" data-resume-menu hidden>
-                  <button type="button" data-resume-open>View Resume</button>
-                  <a href="./assets/ResumeDanielLee.pdf" target="_blank" rel="noreferrer" download>Download PDF</a>
-                </div>
+        <footer class="index__foot">
+          <p>Copyright &#169; 2027 Daniel Lee. All Rights Reserved.</p>
+        </footer>
+      </aside>
+
+      <!-- Reader: shows one item at a time. -->
+      <main class="reader" id="reader" tabindex="-1" data-reader>
+        <a class="reader__back" href="#index" data-back>
+          <span aria-hidden="true">&#8592;</span> Index
+        </a>
+
+        <article class="pane pane--overview" id="overview" data-pane="overview" aria-labelledby="overview-title">
+          <div class="overview">
+            <div class="overview__intro">
+              <p class="overview__context">Portfolio and Resume</p>
+              <h1 id="overview-title" class="overview__name" tabindex="-1">Daniel Lee</h1>
+              <p class="overview__lead">
+                Software engineer focused on data systems, ML applications, and polished product experiences.
+                I build tools that make technical work easier to use and more accessible.
+              </p>
+              <div class="overview__actions">
+                <a class="btn btn--primary" href="#projects" data-explore>Explore Projects</a>
+                <a class="btn" href="#resume">View Resume</a>
+                <a class="btn btn--quiet" href="./assets/ResumeDanielLee.pdf" target="_blank" rel="noreferrer" download>Download PDF</a>
               </div>
             </div>
 
-            <div class="hero__stats">
-              <article class="stat-card">
-                <strong>2+ years</strong>
-                <span>software and data engineering experience</span>
-              </article>
-              <article class="stat-card">
-                <strong>Incoming MS @ UC Davis</strong>
-                <span>computer science, expected graduation June 2028</span>
-              </article>
-              <article class="stat-card">
-                <strong>Interests</strong>
-                <span>Applied ML, Agentic AI, Cloud Infrastructure</span>
-              </article>
+            <figure class="overview__photo">
+              <img src="./assets/optimized/headshot.jpg" width="960" height="1200" alt="Daniel Lee profile picture" />
+            </figure>
+          </div>
+
+          <dl class="facts">
+            <div class="facts__item">
+              <dt>2+ years</dt>
+              <dd>software and data engineering experience</dd>
             </div>
-
-            <div class="social-row" aria-label="Social links">
-              <a href="https://www.linkedin.com/in/lee4293/" target="_blank" rel="noreferrer">LinkedIn</a>
-              <a href="https://github.com/lee4293" target="_blank" rel="noreferrer">GitHub</a>
-              <a href="mailto:danlee4293@gmail.com">Email</a>
+            <div class="facts__item">
+              <dt>Incoming MS @ UC Davis</dt>
+              <dd>computer science, expected graduation June 2028</dd>
             </div>
-          </div>
-
-          <div class="hero__visual">
-            <div class="hero-card">
-              <img src="./assets/headshot.JPEG" alt="Daniel Lee profile picture" />
+            <div class="facts__item">
+              <dt>Interests</dt>
+              <dd>Applied ML, Agentic AI, Cloud Infrastructure</dd>
             </div>
-            <div class="floating-note" tabindex="0" aria-label="Current focus and opportunity status">
-              <div class="focus-note__track">
-                <div class="focus-note__state focus-note__state--primary">
-                  <p>Current focus</p>
-                  <strong>Building portfolio-ready projects with practical value</strong>
-                </div>
-                <div class="focus-note__state focus-note__state--alternate">
-                  <p class="focus-note__label"><span class="status-dot"></span>Open to opportunities</p>
-                  <strong>Software, data, and AI/ML roles in tech and finance</strong>
-                </div>
+          </dl>
+
+          <div class="overview__foot">
+            <section class="status" aria-label="Current focus and opportunity status">
+              <div class="status__item">
+                <p class="status__label">Current focus</p>
+                <p>Building portfolio-ready projects with practical value</p>
               </div>
-            </div>
+              <div class="status__item">
+                <p class="status__label"><span class="status__dot" aria-hidden="true"></span>Open to opportunities</p>
+                <p>Software, data, and AI/ML roles in tech and finance</p>
+              </div>
+            </section>
+
+            <ul class="social" aria-label="Social links">
+              <li><a href="https://www.linkedin.com/in/lee4293/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+              <li><a href="https://github.com/lee4293" target="_blank" rel="noreferrer">GitHub</a></li>
+              <li><a href="mailto:danlee4293@gmail.com">Email</a></li>
+            </ul>
           </div>
-        </section>
+        </article>
 
-        <section id="about" class="section panel">
-          <div class="section-heading">
-            <p class="eyebrow">Get to know more</p>
-            <h2>About</h2>
-          </div>
+        <!-- Project panes are rendered here from projects.js. -->
+        <div data-project-panes></div>
 
-          <div class="about-grid">
-            <article class="about-card about-card--bio">
-              <div class="about-card__image">
-                <img src="./assets/11zon_cropped.png" alt="Daniel Lee portrait" />
-              </div>
-              <div class="about-card__content">
-                <p>
-                  I graduated from <a href="https://www.purdue.edu/" target="_blank" rel="noreferrer">Purdue University</a>
-                  in 2026 with a B.S. in Data Science and am now pursuing an M.S. in Computer Science at the <a href="https://www.ucdavis.edu/" 
-                  target="_blank" rel="noreferrer">University of California, Davis</a> with an expected graduation date of 2028. 
-                  My work sits at the intersection of software engineering, data engineering, and
-                  applied machine learning. <br> <br> I like creating products that make life easier. My hobbies include
-                  listening to and producing electronic music, playing chess, and following the UFC and NBA. 
-                </p>
-              </div>
-            </article>
+        <article class="pane" id="about" data-pane="about" aria-labelledby="about-title">
+          <header class="pane__head">
+            <h2 id="about-title" class="pane__title" tabindex="-1">About</h2>
+            <p class="pane__sub">Get to know more</p>
+          </header>
 
-            <article class="about-card about-card--highlights">
-              <div class="mini-card">
-                <span>Education</span>
-                <strong>Data Science, B.S.</strong>
-                <strong>Computer Science, M.S.</strong>
-              </div>
-              <div class="mini-card">
-                <span>What I build</span>
-                <strong>Data pipelines</strong>
-                <strong>ML tooling</strong>
-                <strong>Fast, usable web apps</strong>
-              </div>
-              <div class="mini-card">
-                <span>Tools I use</span>
-                <div class="tag-list">
-                  <span>Python</span>
-                  <span>Java</span>
-                  <span>SQL</span>
-                  <span>PyTorch</span>
-                  <span>Azure</span>
-                  <span>Node.js</span>
-                </div>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section id="experience" class="section panel">
-          <div class="section-heading">
-            <p class="eyebrow">Explore my stack</p>
-            <h2>Experience</h2>
-          </div>
-
-          <div class="experience-grid">
-            <article class="experience-card">
-              <h3>Programming Languages</h3>
-              <div class="skill-list">
-                <div class="skill-item"><span>Java</span><em>Experienced</em></div>
-                <div class="skill-item"><span>Python</span><em>Experienced</em></div>
-                <div class="skill-item"><span>SQL</span><em>Intermediate</em></div>
-                <div class="skill-item"><span>R</span><em>Intermediate</em></div>
-                <div class="skill-item"><span>C++</span><em>Intermediate</em></div>
-                <div class="skill-item"><span>HTML / CSS</span><em>Intermediate</em></div>
-              </div>
-            </article>
-
-            <article class="experience-card">
-              <h3>Developer Tools</h3>
-              <div class="skill-list">
-                <div class="skill-item"><span>Microsoft Azure</span><em>Intermediate</em></div>
-                <div class="skill-item"><span>Node.js</span><em>Intermediate</em></div>
-                <div class="skill-item"><span>Jupyter Notebook / Lab</span><em>Experienced</em></div>
-                <div class="skill-item"><span>Git</span><em>Intermediate</em></div>
-                <div class="skill-item"><span>PyTorch</span><em>Intermediate</em></div>
-                <div class="skill-item"><span>Hugging Face Transformers</span><em>Intermediate</em></div>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section id="projects" class="section panel">
-          <div class="section-heading section-heading--split">
-            <div>
-              <p class="eyebrow">Selected work</p>
-              <h2>Projects</h2>
-            </div>
-            <p class="section-note">Hover over a card to see automatically scrolling previews.</p>
-          </div>
-
-          <div class="projects-grid">
-            <article
-              class="project-card"
-              data-project-users="Researchers|Students|Journalists|Science communicators|Healthcare professionals"
-              data-expanded-description="Nuveri is a reading and research-trust platform built to help people verify scientific claims quickly and confidently. It turns primary research papers into plain-language summaries, surfaces confidence scores and reasoning, and flags issues like retractions, funding conflicts, and weak study design before a user trusts the claim. The product blends a personalized research feed with tools for citation generation, concept lookup, and fast interpretation of scientific evidence."
-            >
-              <div class="project-media" data-project="nuveri">
-                <img src="./assets/nuverilogo_filled.png" alt="Nuveri project preview" class="project-img" />
-                <div class="project-overlay">
-                  <span class="project-kicker">Research intelligence</span>
-                  <h3>Nuveri</h3>
-                  <p>Scientific trust and evidence analysis platform for understanding what a study really shows.</p>
-                  <div class="btn-row">
-                    <a class="btn btn--small btn--ghost" href="https://www.nuveri.app/" target="_blank" rel="noreferrer">Website</a>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article
-              class="project-card"
-              data-project-users="Students|Career fair corporate representatives|Campus event organizers"
-              data-expanded-description="CampusBuzz is a campus discovery platform designed to help students learn more about the companies at career fairs while giving corporate representatives a focused way to present opportunities and connect with attendees.
-              Students can leave reviews and feedback on the companies they interact with, including but not limited to wait time, engagement quality, and overall experience with CampusBuzz."
-            >
-              <div class="project-media" data-project="campusbuzz">
-                <img src="./assets/campusbuzz_home.png" alt="CampusBuzz project preview" class="project-img" />
-                <div class="project-overlay">
-                  <span class="project-kicker">Featured product</span>
-                  <h3>CampusBuzz</h3>
-                  <p>A campus discovery platform built to surface events, fairs, and portfolio-style content.</p>
-                  <div class="btn-row">
-                    <a class="btn btn--small" href="https://github.com/lee4293/campusbuzz" target="_blank" rel="noreferrer">GitHub</a>
-                    <a class="btn btn--small btn--ghost" href="https://campusbuzz.live/" target="_blank" rel="noreferrer">Live Demo</a>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article
-              class="project-card"
-              data-project-users="Teachers|Students|Computer science learners"
-              data-expanded-description="PathLab is an interactive shortest-path visualizer that makes route-finding algorithms easier to teach and study by showing their behavior step by step on a grid."
-            >
-              <div class="project-media" data-project="pathlab">
-                <img src="./assets/pathlab.png" alt="PathLab project preview" class="project-img" />
-                <div class="project-overlay">
-                  <span class="project-kicker">Algorithms showcase</span>
-                  <h3>PathLab</h3>
-                  <p>Interactive shortest-path visualizer that demonstrates algorithm behavior step by step.</p>
-                  <div class="btn-row">
-                    <a class="btn btn--small" href="https://github.com/lee4293/pathlab" target="_blank" rel="noreferrer">GitHub</a>
-                    <a class="btn btn--small btn--ghost" href="https://youtu.be/O4fcV65Au0U" target="_blank" rel="noreferrer">Live Demo</a>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article
-              class="project-card project-card--ghost"
-              data-project-users="Early adopters|Product collaborators|Recruiters and engineering teams"
-              data-expanded-description="Seam is currently in development. This project space will be updated with a complete overview, technical details, and working links as the product becomes ready to share."
-            >
-              <div class="project-media project-media--placeholder" data-project="spotlight">
-                <img src="./assets/blank-white.svg" alt="Project in progress preview" class="project-img" />
-                <div class="project-overlay">
-                  <span class="project-kicker">In progress</span>
-                  <h3>Next build</h3>
-                  <p>A future project slot reserved for my next project, Seam. Ask about it by connecting with me.</p>
-                  <div class="btn-row">
-                    <a class="btn btn--small" href="#contact">Ask about it</a>
-                  </div>
-                </div>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section id="contact" class="section panel contact-panel">
-          <div class="section-heading section-heading--split">
-            <div>
-              <p class="eyebrow">Let’s connect</p>
-              <h2>Contact</h2>
+          <div class="about">
+            <figure class="about__photo">
+              <img src="./assets/optimized/about-portrait.png" width="720" height="720" alt="Daniel Lee portrait" loading="lazy" />
+            </figure>
+            <div class="about__bio">
+              <p>
+                I graduated from <a href="https://www.purdue.edu/" target="_blank" rel="noreferrer">Purdue University</a>
+                in 2026 with a B.S. in Data Science and am now pursuing an M.S. in Computer Science at the
+                <a href="https://www.ucdavis.edu/" target="_blank" rel="noreferrer">University of California, Davis</a>
+                with an expected graduation date of 2028. My work sits at the intersection of software engineering,
+                data engineering, and applied machine learning.
+              </p>
+              <p>
+                I like creating products that make life easier. My hobbies include listening to and producing
+                electronic music, playing chess, and following the UFC and NBA.
+              </p>
             </div>
           </div>
 
-          <div class="contact-grid">
-            <article class="contact-card">
-              <span>Primary email</span>
-              <a href="mailto:danlee4293@gmail.com">danlee4293@gmail.com</a>
-              <button class="btn btn--small btn--ghost" type="button" data-copy-email>Copy address</button>
-            </article>
-            <article class="contact-card">
-              <span>Professional network</span>
-              <a href="https://www.linkedin.com/in/lee4293/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <dl class="props">
+            <div class="props__row">
+              <dt>Education</dt>
+              <dd>
+                <ul class="props__values">
+                  <li>Data Science, B.S.</li>
+                  <li>Computer Science, M.S.</li>
+                </ul>
+              </dd>
+            </div>
+            <div class="props__row">
+              <dt>What I build</dt>
+              <dd>
+                <ul class="props__values">
+                  <li>Data pipelines</li>
+                  <li>ML tooling</li>
+                  <li>Fast, usable web apps</li>
+                </ul>
+              </dd>
+            </div>
+            <div class="props__row">
+              <dt>Tools I use</dt>
+              <dd>
+                <ul class="chips">
+                  <li>Python</li>
+                  <li>Java</li>
+                  <li>SQL</li>
+                  <li>PyTorch</li>
+                  <li>Azure</li>
+                  <li>Node.js</li>
+                </ul>
+              </dd>
+            </div>
+          </dl>
+        </article>
+
+        <article class="pane" id="experience" data-pane="experience" aria-labelledby="experience-title">
+          <header class="pane__head">
+            <h2 id="experience-title" class="pane__title" tabindex="-1">Experience</h2>
+            <p class="pane__sub">Explore my stack</p>
+          </header>
+
+          <div class="stack">
+            <table class="stack__table">
+              <caption>Programming Languages</caption>
+              <thead>
+                <tr><th scope="col">Language</th><th scope="col">Level</th></tr>
+              </thead>
+              <tbody>
+                <tr data-level="experienced"><th scope="row">Java</th><td>Experienced</td></tr>
+                <tr data-level="experienced"><th scope="row">Python</th><td>Experienced</td></tr>
+                <tr data-level="intermediate"><th scope="row">SQL</th><td>Intermediate</td></tr>
+                <tr data-level="intermediate"><th scope="row">R</th><td>Intermediate</td></tr>
+                <tr data-level="intermediate"><th scope="row">C++</th><td>Intermediate</td></tr>
+                <tr data-level="intermediate"><th scope="row">HTML / CSS</th><td>Intermediate</td></tr>
+              </tbody>
+            </table>
+
+            <table class="stack__table">
+              <caption>Developer Tools</caption>
+              <thead>
+                <tr><th scope="col">Tool</th><th scope="col">Level</th></tr>
+              </thead>
+              <tbody>
+                <tr data-level="intermediate"><th scope="row">Microsoft Azure</th><td>Intermediate</td></tr>
+                <tr data-level="intermediate"><th scope="row">Node.js</th><td>Intermediate</td></tr>
+                <tr data-level="experienced"><th scope="row">Jupyter Notebook / Lab</th><td>Experienced</td></tr>
+                <tr data-level="intermediate"><th scope="row">Git</th><td>Intermediate</td></tr>
+                <tr data-level="intermediate"><th scope="row">PyTorch</th><td>Intermediate</td></tr>
+                <tr data-level="intermediate"><th scope="row">Hugging Face Transformers</th><td>Intermediate</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="pane" id="contact" data-pane="contact" aria-labelledby="contact-title">
+          <header class="pane__head">
+            <h2 id="contact-title" class="pane__title" tabindex="-1">Contact</h2>
+            <p class="pane__sub">Let’s connect</p>
+          </header>
+
+          <div class="contact">
+            <div class="contact__primary">
+              <p class="contact__label">Primary email</p>
+              <a class="contact__email" href="mailto:danlee4293@gmail.com">danlee4293@gmail.com</a>
+              <button class="btn" type="button" data-copy-email>Copy address</button>
+              <span class="visually-hidden" role="status" data-copy-status></span>
+            </div>
+            <div class="contact__row">
+              <p class="contact__label">Professional network</p>
+              <a class="contact__link" href="https://www.linkedin.com/in/lee4293/" target="_blank" rel="noreferrer">LinkedIn</a>
               <p>Connect with me on LinkedIn to see my professional experience.</p>
-            </article>
-            <article class="contact-card">
-              <span>Code repository</span>
-              <a href="https://github.com/lee4293" target="_blank" rel="noreferrer">GitHub profile</a>
+            </div>
+            <div class="contact__row">
+              <p class="contact__label">Code repository</p>
+              <a class="contact__link" href="https://github.com/lee4293" target="_blank" rel="noreferrer">GitHub profile</a>
               <p>Browse active projects, experiments, and code samples.</p>
-            </article>
+            </div>
           </div>
-        </section>
+        </article>
+
+        <article class="pane pane--resume" id="resume" data-pane="resume" aria-labelledby="resume-title">
+          <header class="pane__head pane__head--row">
+            <h2 id="resume-title" class="pane__title" tabindex="-1">Resume</h2>
+            <a class="btn btn--primary" href="./assets/ResumeDanielLee.pdf" target="_blank" rel="noreferrer" download>Download PDF</a>
+          </header>
+          <iframe class="resume__frame" title="Daniel Lee resume" data-src="./assets/ResumeDanielLee.pdf"></iframe>
+        </article>
       </main>
-
-      <footer class="site-footer">
-        <p>Copyright &#169; 2027 Daniel Lee. All Rights Reserved.</p>
-      </footer>
     </div>
 
-    <div class="project-modal" data-project-modal hidden>
-      <div class="project-modal__backdrop" data-project-modal-close></div>
-      <section class="project-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
-        <button class="project-modal__close" type="button" aria-label="Close project details" data-project-modal-close>&times;</button>
-
-        <span class="project-kicker" data-project-modal-kicker></span>
-        <h2 id="project-modal-title" data-project-modal-title></h2>
-
-        <div class="project-modal__tabs" role="tablist" aria-label="Project information">
-          <button type="button" role="tab" aria-selected="true" aria-controls="project-modal-overview" data-project-modal-tab="overview">Overview</button>
-          <button type="button" role="tab" aria-selected="false" aria-controls="project-modal-users" data-project-modal-tab="users">Users</button>
-        </div>
-
-        <div id="project-modal-overview" class="project-modal__panel" role="tabpanel" data-project-modal-panel="overview">
-          <p data-project-modal-description></p>
-          <div class="project-modal__actions">
-            <a class="btn btn--small" target="_blank" rel="noreferrer" data-project-modal-github>GitHub</a>
-            <a class="btn btn--small btn--ghost" target="_blank" rel="noreferrer" data-project-modal-demo>Live Demo</a>
-          </div>
-        </div>
-
-        <div id="project-modal-users" class="project-modal__panel" role="tabpanel" data-project-modal-panel="users" hidden>
-          <p>People who may find this project useful:</p>
-          <ul class="project-modal__users" data-project-modal-users></ul>
-        </div>
-      </section>
-    </div>
-
-    <div class="resume-modal" data-resume-modal hidden>
-      <div class="resume-modal__backdrop" data-resume-modal-close></div>
-      <section class="resume-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title">
-        <div class="resume-modal__header">
-          <h2 id="resume-modal-title">Resume</h2>
-          <button class="resume-modal__close" type="button" aria-label="Close resume" data-resume-modal-close>&times;</button>
-        </div>
-        <iframe src="./assets/ResumeDanielLee.pdf" title="Daniel Lee resume" loading="lazy"></iframe>
-      </section>
-    </div>
-
+    <script src="projects.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

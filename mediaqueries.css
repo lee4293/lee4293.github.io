@@ -1,116 +1,148 @@
-@media screen and (max-width: 1280px) {
-  .section-rail {
-    display: none;
+/*
+  Breakpoints. The viewport decides the shell (one view vs. two panes);
+  container queries on the reader decide each pane's internal layout, since the reader's width
+  depends on whether the index is beside it.
+*/
+
+.reader {
+  container: reader / inline-size;
+}
+
+/* ---------- Pane layouts by reader width ---------- */
+
+@container reader (min-width: 560px) {
+  .gallery__thumbs {
+    display: flex;
   }
 
-  .projects-grid,
-  .contact-grid {
-    grid-template-columns: 1fr 1fr;
+  .facts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-5);
+    border-top: 0;
+  }
+
+  .facts__item {
+    border-top: 2px solid var(--ink);
+    border-bottom: 0;
+  }
+
+  .overview__foot {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  }
+
+  .about {
+    grid-template-columns: 160px minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .props__row {
+    grid-template-columns: 10em minmax(0, 1fr);
+    align-items: baseline;
+  }
+
+  .contact {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-6);
+  }
+
+  .contact__primary {
+    grid-column: 1 / -1;
   }
 }
 
-@media screen and (max-width: 1080px) {
-  .site-nav {
-    display: none;
+@container reader (min-width: 820px) {
+  .overview {
+    grid-template-columns: minmax(0, 1fr) 260px;
+    align-items: end;
   }
 
-  .menu-toggle {
-    display: inline-flex;
+  .overview__photo {
+    max-width: none;
   }
 
-  .hero,
-  .about-grid,
-  .experience-grid,
-  .contact-grid,
-  .projects-grid {
-    grid-template-columns: 1fr;
+  .stack {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-7);
   }
 
-  .about-card--bio {
-    grid-template-columns: 1fr;
+  .project__body {
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    column-gap: var(--space-7);
   }
 
-  .hero {
-    min-height: auto;
+  .about {
+    grid-template-columns: 200px minmax(0, 1fr);
   }
 
-  .hero__visual {
-    order: -1;
-  }
-
-  .floating-note {
-    left: 12px;
-    bottom: 16px;
+  .about__photo {
+    width: 200px;
   }
 }
 
-@media screen and (max-width: 720px) {
-  .site-header {
-    padding-inline: 16px;
+/* ---------- Two-pane shell ---------- */
+
+@media (min-width: 900px) {
+  .app {
+    display: grid;
+    grid-template-columns: 300px minmax(0, 1fr);
+    height: 100dvh;
+    overflow: hidden;
   }
 
-  main {
-    padding-inline: 16px;
-    padding-bottom: 24px;
+  .js .app[data-view] .index,
+  .js .app[data-view] .reader {
+    display: block;
   }
 
-  .section {
-    margin-top: 18px;
-    padding: 22px;
-    border-radius: 24px;
+  .index {
+    display: flex;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
 
-  .hero h1 {
-    font-size: clamp(2.8rem, 15vw, 4.4rem);
+  .js .app[data-view] .index {
+    display: flex;
   }
 
-  .hero__stats {
-    grid-template-columns: 1fr;
+  .reader {
+    min-height: 0;
+    overflow-y: auto;
+    padding: var(--space-7) clamp(var(--space-6), 5vw, var(--space-8)) var(--space-8);
   }
 
-  .hero__actions,
-  .btn-row {
-    flex-direction: column;
+  .reader__back {
+    display: none;
   }
 
-  .btn,
-  .btn-row .btn {
-    width: 100%;
+  .resume__frame {
+    height: calc(100dvh - 220px);
   }
 
-  .project-modal {
-    padding: 14px;
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes pane-in-wide {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+    }
+
+    .pane.is-entering {
+      animation-name: pane-in-wide;
+    }
+  }
+}
+
+@media (min-width: 1280px) {
+  .app {
+    grid-template-columns: 340px minmax(0, 1fr);
   }
 
-  .project-modal__dialog {
-    padding: 24px 20px;
-    border-radius: 24px;
+  .index {
+    padding-inline: var(--space-5);
   }
 
-  .project-modal__actions {
-    flex-direction: column;
-  }
-
-  .project-modal__actions .btn {
-    width: 100%;
-  }
-
-  .about-card__image img,
-  .project-media {
-    min-height: 240px;
-  }
-
-  .section-heading--split {
-    grid-template-columns: 1fr;
-  }
-
-  .project-overlay {
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-  }
-
-  .project-img {
-    filter: brightness(0.86);
+  .index__marker {
+    left: calc(-1 * var(--space-5));
   }
 }
