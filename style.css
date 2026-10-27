@@ -1,28 +1,28 @@
-/* Workspace: index + reader. Mobile-first; the two-pane layout lives in mediaqueries.css. */
+/* Workspace (Swiss theme): index + reader. Mobile-first; the two-pane layout lives in mediaqueries.css. */
 
 :root {
   /* Index (left) */
-  --index-bg: #12332f;
-  --index-raised: #1a403b;
-  --index-ink: #e8f0ec;
-  --index-muted: #a9c2b9;
-  --index-marker: #8fe3c4;
-  --index-mark-ink: #12332f;
-  --index-hover: rgba(255, 255, 255, 0.06);
+  --index-bg: #ebebea;
+  --index-raised: #ffffff;
+  --index-ink: #000000;
+  --index-muted: #555553;
+  --index-marker: #d52b1e;
+  --index-mark-ink: #ffffff;
+  --index-hover: rgba(0, 0, 0, 0.05);
 
   /* Reader (right) */
-  --paper: #fafbfa;
-  --ink: #15201d;
-  --muted: #56635e;
-  --rule: #dce3df;
-  --rule-strong: #b9c4bf;
-  --tint: #eef2ef;
-  --accent: #0e6b5c;
+  --paper: #ffffff;
+  --ink: #000000;
+  --muted: #5c5c5c;
+  --rule: #e2e2e2;
+  --rule-strong: #bdbdbd;
+  --tint: #f2f2f2;
+  --accent: #d52b1e;
   --accent-ink: #ffffff;
-  --accent-ring: rgba(14, 107, 92, 0.15);
+  --accent-ring: rgba(213, 43, 30, 0.15);
   --frame: #ffffff;
 
-  --font: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --font: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
   --font-display: var(--font);
 
   /* Scale (1.2) */
@@ -202,7 +202,6 @@ p {
 .social a,
 .contact__link,
 .contact__email {
-  font-family: var(--font-display);
   text-decoration-line: underline;
   text-decoration-color: var(--rule-strong);
   text-decoration-thickness: 1px;
@@ -519,6 +518,7 @@ p {
 
 .facts__item {
   display: grid;
+  align-content: start;
   gap: var(--space-1);
   padding: var(--space-4) 0;
   border-bottom: 1px solid var(--rule);
@@ -721,6 +721,7 @@ p {
 .contact__primary,
 .contact__row {
   display: grid;
+  align-content: start;
   justify-items: start;
   gap: var(--space-2);
 }
@@ -741,6 +742,7 @@ p {
 }
 
 .contact__email {
+  font-family: var(--font-display);
   font-size: clamp(1.5rem, 7.5vw, 3rem);
   font-weight: 700;
   font-stretch: 85%;
@@ -1052,5 +1054,42 @@ p {
   *::after {
     animation: none !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------- Theme: Swiss ---------- */
+
+/* One grotesque, set tight and heavy for headings; red is reserved for state (selection, primary action, focus). */
+.overview__name,
+.project__title {
+  font-weight: 700;
+  letter-spacing: -0.045em;
+}
+
+.pane__title,
+.contact__email {
+  letter-spacing: -0.03em;
+}
+
+.index__mark {
+  border-radius: 0;
+}
+
+.btn,
+.gallery__step,
+.gallery__thumb,
+.gallery__frame,
+.index__item,
+.index__thumb,
+.project__empty,
+.resume__frame,
+.overview__photo img,
+.chips li {
+  border-radius: 2px;
+}
+
+@media (min-width: 900px) {
+  .index {
+    border-right: 1px solid #d9d9d7;
   }
 }
